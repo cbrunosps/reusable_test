@@ -340,12 +340,12 @@ jobs:
 
       
       # Scripts Posteriores al despliegue
-      - if: ${{ inputs.post_script != '' }}
-        name: Scripts Post-Despliegue
-        run: |
-          cd ${{inputs.carpeta_sam}}
-          chmod +x ${{inputs.post_script}}
-          ./${{inputs.post_script}} ${{env.fullStackName}} ${{env.samEnv}} ${{inputs.ref}} ${{inputs.region}} ${{env.awsAccountID}} ${{inputs.region_dr}} 
+#      - if: ${{ inputs.post_script != '' }}
+#        name: Scripts Post-Despliegue
+#        run: |
+#          cd ${{inputs.carpeta_sam}}
+#          chmod +x ${{inputs.post_script}}
+#          ./${{inputs.post_script}} ${{env.fullStackName}} ${{env.samEnv}} ${{inputs.ref}} ${{inputs.region}} ${{env.awsAccountID}} ${{inputs.region_dr}} 
     
       # Validar drift
       - if: ${{ inputs.validar_drift == 'true' && ( (fromJson(steps.read_json.outputs.pfgSamJSON).cfn_role == '' || inputs.cfn_role == '') ) || (inputs.forzar_usuario == 'true'&& inputs.validar_drift == 'true') }}
